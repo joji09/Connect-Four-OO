@@ -37,7 +37,7 @@ makeHtmlBoard() {
   const top = document.createElement('tr');
   top.setAttribute('id', 'column-top');
 
-this.handleGameClick = this.handleClick.bind("this");
+this.handleGameClick = this.handleGameClick.bind(this);
 
   top.addEventListener('click', this.handleGameClick);
 
@@ -96,7 +96,7 @@ endGame(msg) {
 
 /** handleClick: handle click of column top to play piece */
 
-handleClick(evt) {
+handleGameClick(evt) {
   // get x from ID of clicked cell
   const x = +evt.target.id;
 
@@ -113,7 +113,7 @@ handleClick(evt) {
   // check for win
   if (this.checkForWin()) {
     this.gameOver = true;
-    return this.endGame(`Player ${currPlayer} won!`);
+    return this.endGame(`Player ${this.currPlayer.color} won!`);
   }
   
   // check for tie
